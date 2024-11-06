@@ -49,7 +49,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spa.project.core.version>1.0.6</spa.project.core.version>
-        <aem.sdk.api>2020.6.3614.20200604T023048Z-200507</aem.sdk.api>
+        <aem.sdk.api>2024.7.17258.20240726T172406Z-240700</aem.sdk.api>
+        <aemanalyser.version>1.4.10</aemanalyser.version>
     </properties>
 
     <build>
@@ -89,9 +90,8 @@
                                     <version>[3.3.9,)</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <message>Project must be compiled
-                                        with Java 8 or higher</message>
-                                    <version>1.8.0</version>
+                                    <message>Maven must be executed with a Java 11 JRE or higher.</message>
+                                    <version>11</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
@@ -259,6 +259,18 @@ Bundle-DocURL:
                         <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
                     </configuration>
                 </plugin>
+
+                <!-- AEM Analyser Plugin -->
+                                        
+        
+        
+                <plugin>
+                    <groupId>com.adobe.aem</groupId>
+                    <artifactId>aemanalyser-maven-plugin</artifactId>
+                    <version>${aemanalyser.version}</version>
+                    <extensions>true</extensions>
+                </plugin>
+
                 <!-- Content Package Plugin -->
                 <plugin>
                     <groupId>com.day.jcr.vault</groupId>
