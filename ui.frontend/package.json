@@ -16,11 +16,11 @@
     "custom-event-polyfill": "^1.0.7",
     "dompurify": "^3.0.3",
     "history": "^4.10.1",
-    "node-sass": "^4.14.1",
+    
     "normalize-scss": "^7.0.1",
-    "react": "^18.2.0",
+    "react": "18.2.0",
     "react-app-polyfill": "^1.0.5",
-    "react-dom": "^18.2.0",
+    "react-dom": "18.2.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1"
     
@@ -32,7 +32,7 @@
     "aem-clientlib-generator": "^1.5.0",
     "aemsync": "^4.0.0",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
+    
     "sinon": "^7.5.0",
     "sass": "^1.56.1"
   },

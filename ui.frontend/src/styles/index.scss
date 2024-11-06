@@ -19,7 +19,7 @@
 /* Normalize */
 @import '~normalize-scss/sass/normalize';
 
-@import './styles/variables';
+@import './variables';
 
 body {
     background-color: $body-bg;
