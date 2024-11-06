@@ -24,7 +24,7 @@ import 'custom-event-polyfill';
 import { Constants, ModelManager } from '@adobe/aem-spa-page-model-manager';
 import { createBrowserHistory } from 'history';
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Router } from 'react-router-dom';
 import App from './App';
 import './components/import-components';
