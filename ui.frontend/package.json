@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^^14.0.0",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "aem-clientlib-generator": "^1.5.0",
     "aemsync": "^4.0.0",
