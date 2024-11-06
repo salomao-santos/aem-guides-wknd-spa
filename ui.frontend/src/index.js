@@ -55,7 +55,3 @@ document.addEventListener('DOMContentLoaded', () => {
       </Router>)
   });
 });
-document.addEventListener('DOMContentLoaded', () => {
-
-  renderApp();
-});
