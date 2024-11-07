@@ -23,6 +23,6 @@ const AppPage = (props) => {
   return <Page {...props} className={props.className || ` page` } />
 }
 
-export default MapTo('aem-react-spa/components/page')(
+export default MapTo('wknd-spa-react/components/page')(
   withRoute(AppPage)
 );
