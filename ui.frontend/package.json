@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && clientlib",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "sync": "aemsync -d -w ../ui.apps/src/main/content"
+    "build": "node ./scripts/build.js",
+        "start": "node ./scripts/start.js",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "postinstall": "node ./scripts/post-install.mjs"
   },
   "dependencies": {
     "@adobe/aem-react-editable-components": "^2.0.4",
@@ -26,9 +26,9 @@
     "sass": "^1.26.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "aem-clientlib-generator": "^1.5.0",
     "aemsync": "^4.0.0",
     "enzyme": "^3.10.0",
