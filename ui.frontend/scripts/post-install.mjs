@@ -43,7 +43,7 @@ async function main() {
     const __dirname = path.dirname(__filename);
     const { name } = JSON.parse(await fs.readFile(path.resolve(__dirname, '../package.json'), { encoding: 'utf-8' }));
 
-    if (name !== 'aem-react-spa') {
+    if (name !== 'aem-guides-wknd-spa') {
         // the template already got initialised
         return 0;
     }
@@ -65,7 +65,7 @@ async function main() {
 
     try {
         console.log();
-        await replaceInFiles('aem-react-spa', appId, ['src', '.env', 'package.json', 'package-lock.json']);
+        await replaceInFiles('aem-guides-wknd-spa', appId, ['src', '.env', 'package.json', 'package-lock.json']);
         console.log();
         console.log(chalk.green('Successfully initialised template 👏'));
 
