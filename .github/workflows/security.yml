@@ -2,17 +2,22 @@ name: Vulnerability check
 on:
   push:
     branches:
-      - master
+      feature/React-18-and-Pipeline-Frontend
   pull_request_target:
 
 jobs:
   security:
-    runs-on: ubuntu-latest
+   runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04, macos-latest, windows-latest ]
+        java: [11]
+        profile: [ '']
     steps:
       - name: Checkout source code
-        uses: actions/checkout@master
+        uses: actions/checkout@feature/React-18-and-Pipeline-Frontend
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/maven-3-jdk-11@master
+        uses: snyk/actions/maven-3-jdk-11@feature/React-18-and-Pipeline-Frontend
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
