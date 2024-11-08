@@ -30,20 +30,26 @@ on:
         default: 'true'
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04, macos-latest, windows-latest ]
+        java: [11]
+        profile: [ ''] 
     # Only release from `main` branch
     if: github.repository == 'adobe/aem-guides-wknd-spa' && github.ref == 'refs/heads/main'
     steps:
+      - name: Configure git with longpath enabled (for windows)
+        run: git config --global core.longpaths true
       # Check out Git repository
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       # Set up environment with Java and Maven
       - name: Setup JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v1
         with:
-          distribution: 'temurin'
-          java-version: 8
-          cache: maven
+          java-version: ${{ matrix.java }}
 
       # Import GPG key from env variable into keychain
       - name: Import GPG key
