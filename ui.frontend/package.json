@@ -32,7 +32,6 @@
     "aem-clientlib-generator": "^1.5.0",
     "aemsync": "^4.0.0",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
     "sinon": "^7.5.0"
   },
   "proxy": "http://localhost:4502",
