@@ -9,19 +9,22 @@ on:
 jobs:
   build:
 
-    runs-on: ${{ matrix.os }}
+   runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-20.04, macos-latest, windows-latest ]
         java: [11]
-        profile: [ '', '-Pclassic']
+        profile: [ ''] 
 
     steps:
+      - name: Configure git with longpath enabled (for windows)
+        run: git config --global core.longpaths true
       # Check out Git repository
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Set up environment with Java and Maven
+
+       # Set up environment with Java and Maven
       - name: Setup JDK
         uses: actions/setup-java@v1
         with:
@@ -29,12 +32,13 @@ jobs:
 
       # Set up dependency cache
       - name: Cache local Maven repository
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          key: ${{ runner.os }}-maven-${{ hashFiles('pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
       # Build & Test
       - name: Build & Test with Maven
-        run: mvn clean install ${{ matrix.profile }}
+        run: mvn clean install
