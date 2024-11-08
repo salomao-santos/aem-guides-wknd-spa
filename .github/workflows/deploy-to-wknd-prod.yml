@@ -1,13 +1,13 @@
 # This workflow mirrors the code to the wknd.site repository
-name: Deploy to WKND.site Production
+name: Deploy to WKND-SPA.site Production
 env:
   # Target repository
-  TARGET_REPO: ${{ secrets.WKND_REPOSITORY }}
-  TARGET_BRANCH_DEV: ${{ secrets.WKND_BRANCH_DEV }}
-  TARGET_BRANCH_PROD: ${{ secrets.WKND_BRANCH_PROD }}
-  USER_EMAIL: ${{ secrets.WKND_USER_EMAIL }}
-  USER_NAME: ${{ secrets.WKND_USER_NAME }}
-  USER_PWD: ${{ secrets.WKND_PASSWORD }}
+  TARGET_REPO: ${{ secrets.WKND_SPA_REPOSITORY }}
+  TARGET_BRANCH_DEV: ${{ secrets.WKND_SPA_BRANCH_DEV }}
+  TARGET_BRANCH_PROD: ${{ secrets.WKND_SPA_BRANCH_PROD }}
+  USER_EMAIL: ${{ secrets.WKND_SPA_USER_EMAIL }}
+  USER_NAME: ${{ secrets.WKND_SPA_USER_NAME }}
+  USER_PWD: ${{ secrets.WKND_SPA_PASSWORD }}
 
 # Only run on a push to feature/React-18-and-Pipeline-Frontend branch
 on:
