@@ -9,10 +9,10 @@ env:
   USER_NAME: ${{ secrets.WKND_USER_NAME }}
   USER_PWD: ${{ secrets.WKND_PASSWORD }}
 
-# Only run on a push to master branch
+# Only run on a push to feature/React-18-and-Pipeline-Frontend branch
 on:
   push:
-    branches: [ master ]
+    branches: [ feature/React-18-and-Pipeline-Frontend ]
   workflow_dispatch:
 
 jobs:
@@ -22,36 +22,30 @@ jobs:
       matrix:
         os: [ ubuntu-20.04, macos-latest, windows-latest ]
         java: [11]
-        profile: [ '']
+        profile: [ ''] 
 
-    steps: 
-       - name: Configure git with longpath enabled (for windows)
+    steps:
+      - name: Configure git with longpath enabled (for windows)
         run: git config --global core.longpaths true
-      # Check out Git repository
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-
-# Set up environment with Java and Maven Antes
-       - name: Setup JDK
-        uses: actions/setup-java@v3
+      # Checkout Gibhut project
+      - uses: actions/checkout@v2
         with:
-          distribution: 'temurin'
-          java-version: 8
-          cache: maven
+          fetch-depth: '0'
 
+      - name: Add WKND remote
+        run:
+          git remote add wknd https://${USER_EMAIL}:${USER_PWD}@${TARGET_REPO}
 
-# Set up environment with Java and Maven Depois
-      - name: Setup JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: ${{ matrix.java }}
+      - name: Set Git config
+        run: |
+          git config --global credential.helper cache
+          git config --global user.email ${USER_EMAIL}
+          git config --global user.name ${USER_NAME}
 
-# Set up dependency cache
-     uses: actions/cache@v2 por
-    uses: actions/cache@v3
+      - name: Push changes to WKND Development
+        run:
+          git push -u wknd-spa feature/React-18-and-Pipeline-Frontend:${TARGET_BRANCH_DEV}
 
-
-# Build & Test
-    run:  mvn clean install ${{ matrix.profile }} por
-    run:  mvn clean install
+      - name: Push changes to WKND Production
+        run:
+          git push -u wknd-spa feature/React-18-and-Pipeline-Frontend:${TARGET_BRANCH_PROD}
