@@ -24,16 +24,25 @@ import 'custom-event-polyfill';
 import { Constants, ModelManager } from '@adobe/aem-spa-page-model-manager';
 import { createBrowserHistory } from 'history';
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Router } from 'react-router-dom';
 import App from './App';
+import LocalDevModelClient from './LocalDevModelClient';
+
 import './components/import-components';
-import './index.scss';
+import './styles/index.scss';
+
+const modelManagerOptions = {};
+if(process.env.REACT_APP_PROXY_ENABLED) {
+    modelManagerOptions.modelClient = new LocalDevModelClient(process.env.REACT_APP_API_HOST);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  ModelManager.initialize().then(pageModel => {
+  ModelManager.initialize(modelManagerOptions).then(pageModel => {
+  
     const history = createBrowserHistory();
-    render(
+    const root = createRoot(document.getElementById('spa-root'));
+    root.render(
       <Router history={history}>
         <App
           history={history}
@@ -43,8 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
           cqPath={pageModel[Constants.PATH_PROP]}
           locationPathname={window.location.pathname}
         />
-      </Router>,
-      document.getElementById('spa-root')
-    );
+      </Router>)
   });
 });

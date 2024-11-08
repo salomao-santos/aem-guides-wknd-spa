@@ -1,16 +1,9 @@
-import { Page, withModel } from '@adobe/aem-react-editable-components';
+import { Page, EditableComponent } from '@adobe/aem-react-editable-components';
 import React from 'react';
 
 // This component is the application entry point
-class App extends Page {
-  render() {
-    return (
-      <div>
-        {this.childComponents}
-        {this.childPages}
-      </div>
-    );
-  }
+const App = (props) => {
+  return <EditableComponent {...props}><Page {...props} /></EditableComponent>
 }
 
-export default withModel(App);
+export default App;
