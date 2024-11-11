@@ -127,12 +127,12 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
+        <!-- <dependency>
             <groupId>com.adobe.aem.guides</groupId>
             <artifactId>wknd-spa-react.ui.frontend</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
-        </dependency>
+        </dependency> -->
 
         <!-- SPA Project Core (includes hierarchy page) -->
         <dependency>
