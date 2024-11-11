@@ -2,12 +2,12 @@
 name: Deploy to WKND-SPA.site Production
 env:
   # Target repository
-  TARGET_REPO: ${{ secrets.WKND_SPA_REPOSITORY }}
-  TARGET_BRANCH_DEV: ${{ secrets.WKND_SPA_BRANCH_DEV }}
-  TARGET_BRANCH_PROD: ${{ secrets.WKND_SPA_BRANCH_PROD }}
-  USER_EMAIL: ${{ secrets.WKND_SPA_USER_EMAIL }}
-  USER_NAME: ${{ secrets.WKND_SPA_USER_NAME }}
-  USER_PWD: ${{ secrets.WKND_SPA_PASSWORD }}
+  WKND_SPA_TARGET_REPO: ${{ secrets.WKND_SPA_REPOSITORY }}
+  WKND_SPA_TARGET_BRANCH_DEV: ${{ secrets.WKND_SPA_BRANCH_DEV }}
+  WKND_SPA_TARGET_BRANCH_PROD: ${{ secrets.WKND_SPA_BRANCH_PROD }}
+  WKND_SPA_USER_EMAIL: ${{ secrets.WKND_SPA_USER_EMAIL }}
+  WKND_SPA_USER_NAME: ${{ secrets.WKND_SPA_USER_NAME }}
+  WKND_SPA_USER_PWD: ${{ secrets.WKND_SPA_PASSWORD }}
 
 # Only run on a push to feature/React-18-and-Pipeline-Frontend branch
 on:
